@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 
 //Get All Issues
 export const getIssues = async (req, res) => {
-  console.log("Inside Get Issues");
   try {
     const issueList = await IssueItem.find();
 
@@ -15,7 +14,6 @@ export const getIssues = async (req, res) => {
 
 //Creating an issue
 export const createIssue = async (req, res) => {
-  console.log("Create Issue");
   const newIssue = new IssueItem(req.body);
   try {
     await newIssue.save();
@@ -28,7 +26,6 @@ export const createIssue = async (req, res) => {
 
 //Updating an issue
 export const updateIssue = async (req, res) => {
-  console.log("Update Issue");
   const { id } = req.params;
 
   const updatedIssueFromUser = req.body;
@@ -51,7 +48,6 @@ export const updateIssue = async (req, res) => {
 
 //updating the views
 export const updateViews = async (req, res) => {
-  console.log("Update View");
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id))
@@ -72,7 +68,6 @@ export const updateViews = async (req, res) => {
 
 //Deleting an issue
 export const deleteIssue = async (req, res) => {
-  console.log("Delete Issue");
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id))
@@ -86,7 +81,6 @@ export const deleteIssue = async (req, res) => {
 };
 
 export const getIssueById = async (req, res) => {
-  console.log("Get Issue by id");
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id))
@@ -98,22 +92,3 @@ export const getIssueById = async (req, res) => {
 
   res.status(200).json({ success: true, data: issueItem });
 };
-
-//Get Top 5 Viewed Issues
-// export const getTopCharts = async (req, res) => {
-//   console.log("Get top 5 viewed issues!");
-//   try {
-//   } catch (err) {}
-// };
-
-// //Getting all issues of a specific user
-// export const getIssuesByUserId = async (req, res) => {
-//   console.log("Get Issues by user Id");
-//   try {
-//     const issueList = await IssueItem.find({ userId: req.params.userId });
-
-//     res.status(200).json({ success: true, data: issueList });
-//   } catch (err) {
-//     res.status(400).json({ success: false, message: err.message });
-//   }
-// };

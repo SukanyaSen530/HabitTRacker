@@ -26,6 +26,7 @@ connectDB();
 app.use(cors({ origin: "*" }));
 
 //routes of the app
+app.get("/", (_, res) => res.send("Trackie Backend!"));
 app.use("/api/v1", routes);
 
 const PORT = process.env.PORT || 8000;
