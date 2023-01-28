@@ -4,9 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 
 import connectDB from "./config/db.js";
-
-import issueRoutes from "./api/issues.js";
-import userRoutes from "./api/users.js";
+import routes from "./routes/index.js";
 
 //for accessing the .env file
 dotenv.config();
@@ -27,10 +25,10 @@ connectDB();
 
 app.use(cors({ origin: "*" }));
 
-app.use("/issues", issueRoutes);
-app.use("/users", userRoutes);
+//routes of the app
+app.use("/api/v1", routes);
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const server = app.listen(PORT, (err) => {
   const port = server.address().port;
   if (err) console.log("Error in server setup");
