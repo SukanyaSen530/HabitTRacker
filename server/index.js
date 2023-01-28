@@ -30,8 +30,7 @@ app.use(cors({ origin: "*" }));
 app.use("/issues", issueRoutes);
 app.use("/users", userRoutes);
 
-const PORT = process.env.PORT || 8000;
-
+const PORT = 8000;
 const server = app.listen(PORT, (err) => {
   const port = server.address().port;
   if (err) console.log("Error in server setup");
